@@ -31,6 +31,11 @@
 		<spring-cloud.version>2024.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
+    <dependency>
+      <groupId>com.panda</groupId>
+      <artifactId>mall-commons</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
