@@ -5,6 +5,8 @@ import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.panda.mall.order.entity.OrderEntity;
+import com.panda.mall.order.feign.ProductService;
 import com.panda.mall.order.service.OrderService;
 import com.panda.mall.commons.PageUtils;
 import com.panda.mall.commons.R;
@@ -25,6 +28,7 @@ import com.panda.mall.commons.R;
  * @email panda@gmail.com
  * @date 2025-08-18 14:09:29
  */
+@RefreshScope
 @RestController
 @RequestMapping("order/order")
 public class OrderController {
@@ -42,6 +46,23 @@ public class OrderController {
         return R.ok().put("page", page);
     }
 
+    @Autowired
+    ProductService productService;
+    
+    @RequestMapping("/listbrands")
+   public R listBrands(){
+       return productService.queryAllBrand();
+   }
+    
+   @Value("${user.name}")
+   private String username;
+   @Value("${user.age}")
+   private Integer age;
+   
+   @RequestMapping("/user")
+  public R queryUser(){
+      return  R.ok().put("username", username).put("age", age);
+  }
 
     /**
      * 信息

@@ -1,0 +1,38 @@
+spring:
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.153.100:8848
+
+    gateway:
+      routes:
+        - id: route1
+          uri: http://google.com
+          predicates:
+            - Query=url,google
+        - id: route2
+          uri: http://amazon.com
+          predicates:
+            - Query=url,amazon
+            
+        - id: product_route
+          uri: lb://mall-product
+          predicates:
+            - Path=/app/product/**
+          filters:
+            - RewritePath=/app/?(?<segment>.*), /$\{segment}                        
+           
+        - id: app_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/app/**
+          filters:
+            - RewritePath=/app/?(?<segment>.*), /renren-fast/$\{segment}
+            
+
+        
+  application:
+    name: mall-gateway
+server:
+  port: 8060

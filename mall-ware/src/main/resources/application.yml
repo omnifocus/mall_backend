@@ -4,7 +4,13 @@ server:
 spring:
   application:
     name: mall-ware
-    
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.153.100:8848
+
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置

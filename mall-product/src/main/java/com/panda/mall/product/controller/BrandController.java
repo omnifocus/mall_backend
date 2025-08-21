@@ -1,10 +1,12 @@
 package com.panda.mall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +44,12 @@ public class BrandController {
         return R.ok().put("page", page);
     }
 
-
+    @GetMapping("/all")
+    public R queryAllBrand() {
+    	List<BrandEntity> list  =  brandService.list();
+    	return R.ok().put("brands", list);
+    }
+    
     /**
      * 信息
      */

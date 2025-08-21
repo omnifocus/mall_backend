@@ -1,8 +1,17 @@
 server:
   port: 8040
 
-# mysql
+  
+# nacos
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.153.100:8848
+
+  application:
+    name: mall-product
+# mysql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
@@ -26,7 +35,7 @@ spring:
   #    username: postgres
   #    password: 123456
 
-
+ 
 
   jackson:
     time-zone: GMT+8

@@ -6,7 +6,7 @@ server:
       max: 1000
       min-spare: 30
     connection-timeout: 5000ms
-  port: 8080
+  port: 8070
   servlet:
     context-path: /renren-fast
 
@@ -24,6 +24,12 @@ spring:
       max-request-size: 100MB
       enabled: true
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.153.100:8848
+  application:
+    name: renren-fast
   mvc:
     throw-exception-if-no-handler-found: true
     pathmatch:

@@ -1,8 +1,18 @@
 server:
   port: 8010
 
-# mysql
 spring:
+
+  # nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.153.100:8848
+
+  application:
+    name: mall-coupon
+
+      # mysql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
