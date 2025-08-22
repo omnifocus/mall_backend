@@ -58,6 +58,9 @@ mybatis-plus:
     db-config:
       # auto increment
       id-type: auto  
+      logic-delete-field: show_status
+      logic-delete-value: 0
+      logic-not-delete-value: 1
 
 
 pagehelper:

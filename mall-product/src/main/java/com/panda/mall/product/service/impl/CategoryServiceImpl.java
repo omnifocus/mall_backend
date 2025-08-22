@@ -59,4 +59,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 		}).toList();
 	}
 
+	@Override
+	public void removeCateogryByIds(List<Long> asList) {
+		// TODO 先判断是否有业务关联
+		baseMapper.deleteBatchIds(asList);
+	}
+
 }
