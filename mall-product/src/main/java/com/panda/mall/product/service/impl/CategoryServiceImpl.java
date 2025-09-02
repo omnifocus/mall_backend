@@ -50,7 +50,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
 	private List<CategoryEntity> findSubList(CategoryEntity entity, List<CategoryEntity> all) {
 		return all.stream().filter(e -> {
-			return e.getParentCid() == entity.getCatId();
+			return e.getParentCid().equals(entity.getCatId());
 		}).map(e -> {
 			e.setSubList(findSubList(e, all));
 			return e;
